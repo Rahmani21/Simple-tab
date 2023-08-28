@@ -1,14 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+
+import Payment1 from "./Payment1";
+import Payment2 from "./Payment2";
+import Payment3 from "./Payment3";
+import Payment4 from "./Payment4";
+import Payment5 from "./Payment5";
+import Payment6 from "./Payment6";
+import Payment7 from "./Payment7";
+import Payment8 from "./Payment8";
+import Payment9 from "./Payment9";
+import Payment10 from "./Payment10";
 
 const Purchase = () => {
+  const [selectedValue, setSelectedValue] = useState("$100");
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
   return (
     <div>
-      <div  className="row position-relative responsive">
+      <div className="row position-relative responsive">
         <div className="py-3 px-4 col-6 " id="right">
           <h3 className=" fw-semibold textColor">Determine Your Payment</h3>
           <p className=" fw-medium">Home Purchase Price</p>
           <div className="input-group mb-3 ">
-            <div className="input-group-prepend">
+            {/*         <div className="input-group-prepend">
               <span
                 className="input-group-text rounded-end-0"
                 id="basic-addon1"
@@ -22,9 +38,13 @@ const Purchase = () => {
               placeholder="500,00"
               ariaDescribedBy="basic-addon1"
               ariaLabel="$"
-            />
+  /> */}
 
-            <select className="select w-100 bg-light-subtle rounded py-1 my-2">
+            <select
+              value={selectedValue}
+              onClick={handleSelectChange}
+              className="select w-100 bg-light-subtle rounded py-1 my-2"
+            >
               <option value="$100">$100</option>
               <option value="$200">$200</option>
               <option value="$300">$300</option>
@@ -117,38 +137,18 @@ const Purchase = () => {
             </div>
           </div>
         </div>
+
         <div className="col-6 px-4 h-100 " id="left">
-          <div className="textColor text-center mt-5 ">
-            <p className=" fs-5">Payment of</p>
-            <h1 className=" fw-bolder h1" style={{fontSize:"100px"}}>$2998</h1>
-          </div>
-          <div className="p-5">
-            <div className="row textColor">
-              <div className="col-10">Required mortgage insurance</div>
-              <div className="col-2 fw-semibold ">$19,000</div>
-            </div>
-            <div className="row my-2">
-              <div className="col-10">Total mortgage required</div>
-              <div className="col-2 fw-semibold">$494,000</div>
-            </div>
-            <div className="row ">
-              <div className="col-10">Interest Paid over term</div>
-              <div className="col-2 fw-semibold">$126,077</div>
-            </div>
-            <div className="row my-2">
-              <div className="col-10">Principal paid over term</div>
-              <div className="col-2 fw-semibold">$53,809</div>
-            </div>
-            <div className="row ">
-              <div className="col-10">Balance at end of term</div>
-              <div className="col-2 fw-semibold">$440,190</div>
-            </div>
-          </div>
-          <div className="text-center mb-5">
-            <button className=" text-uppercase backgroundColor border-0 p-2 fw-semibold text-light rounded fs-5 px-3">
-              apply now
-            </button>
-          </div>
+          {selectedValue === "$100" && <Payment1 />}
+          {selectedValue === "$200" && <Payment2 />}
+          {selectedValue === "$300" && <Payment3 />}
+          {selectedValue === "$400" && <Payment4 />}
+          {selectedValue === "$500" && <Payment5 />}
+          {selectedValue === "$600" && <Payment6 />}
+          {selectedValue === "$700" && <Payment7 />}
+          {selectedValue === "$800" && <Payment8 />}
+          {selectedValue === "$900" && <Payment9 />}
+          {selectedValue === "$1000" && <Payment10 />}
         </div>
       </div>
 
